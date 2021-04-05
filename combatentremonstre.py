@@ -1,6 +1,8 @@
 #-*-coding:utf8;-*-
 #qpy:3
 #qpy:console
+#auteur : silanoc
+#sur téléphone portable - juillet 2019
 
 from random import *
 	
