@@ -1,0 +1,36 @@
+#+TITLE: Liste des tâches pour mon projet autour de l'oeil noir
+#+AUTHOR: silanoc
+#+DATE: 8 avril 2020
+#+TAGS:
+
+* Améliorer le README [/]
+** TODO ajouter source du jeu
+** TODO préciser l'objectif initial, puis les évolutions possibles
+
+* Améliorations faciles, qui changent que la forme
+** TODO mettre intro et fin
+** TODO améliorer présentation résultat
+** TODO mettre execission dans ___main___
+** TODO pouvoir choisir combat simple ou tournois
+** TODO pouvoir choisir le nombre de comabat dans le tournois
+** TODO pouvoir rejouer
+** TODO pouvoir choisir qui participe
+** TODO ajouter des tests simples
+
+*  Améliorations 
+** TODO classe héros pour coup du maitre
+** TODO classe humanoide, animaux pour gérer armes (facteur de rupture, maladresse armures, malus armes...)
+** TODO mettre quelques héros dans les combattant-e-s possibles
+** TODO mettre les monstres, hèros, armes... dans des fichier json pour rendre plus lisible et utilisable dans d'autre programmes/langages
+** TODO complèter liste des monstres
+** TODO gèrer que les comabattant-e-s ont des armes/armures pour déterminer les dégats/protections
+** TODO ajout règles évoluées
+** TODO gestion de la magie
+** TODO gestion combat à distance
+** TODO ajouter des tests plus complexes
+** TODO combat 1 contre plusieurs 
+** TODO génerer des monstres/héros aléatoires : caractèristique +-1, choix d'armes avec proba...
+** TODO gérer déplacement 
+
+* scratch
+est-ce possible à coder pour avec les enfants ?
