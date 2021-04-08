@@ -4,16 +4,16 @@
 #+TAGS:
 
 * Améliorer le README [/]
-** TODO ajouter source du jeu
-** TODO préciser l'objectif initial, puis les évolutions possibles
+** DONE ajouter source du jeu
+** DONE préciser l'objectif initial, puis les évolutions possibles
 
 * Améliorations faciles, qui changent que la forme
 ** TODO mettre intro et fin
 ** TODO améliorer présentation résultat
-** TODO mettre execission dans ___main___
+** DONE mettre execussion dans ___main___
 ** TODO pouvoir choisir combat simple ou tournois
-** TODO pouvoir choisir le nombre de comabat dans le tournois
-** TODO pouvoir rejouer
+** TODO pouvoir choisir le nombre de combat dans le tournois
+** DONE pouvoir rejouer
 ** TODO pouvoir choisir qui participe
 ** TODO ajouter des tests simples
 
@@ -31,6 +31,7 @@
 ** TODO combat 1 contre plusieurs 
 ** TODO génerer des monstres/héros aléatoires : caractèristique +-1, choix d'armes avec proba...
 ** TODO gérer déplacement 
-
+** TODO interface console en 3 fichiers
+** TODO interface graphique en 3 fichiers
 * scratch
 est-ce possible à coder pour avec les enfants ?
