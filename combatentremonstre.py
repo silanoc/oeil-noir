@@ -1,8 +1,13 @@
 #-*-coding:utf8;-*-
 #qpy:3
 #qpy:console
+
+#------------------
+#simulateur de combat autour du JdR l'oeil noir
 #auteur : silanoc
 #sur téléphone portable - juillet 2019
+#version 1
+#--------------------
 
 from random import *
 	
@@ -19,7 +24,7 @@ def d6():
     return a
 
 #----------
-# classe pour générer les personnages 
+# classes pour générer les personnages 
 # et leurs méthodes
 #---------
 
