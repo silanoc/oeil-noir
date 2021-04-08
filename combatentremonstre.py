@@ -207,32 +207,37 @@ class combat():
 # déroulement du programme
 #--------     
 
-ork1=ork()   
-gobelin1=gobelin()
-ogre1=ogre()
-troll1=troll()
-kobold1=kobold()
-dragonvolant1=dragon_volant()
+if __name__=="__main__":
+    #générer les instances de monstre à partir des objets
+    ork1=ork()   
+    gobelin1=gobelin()
+    ogre1=ogre()
+    troll1=troll()
+    kobold1=kobold()
+    dragonvolant1=dragon_volant()
 
-participants=[ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1]
-resultats=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
-
-for nmbredecombat in range(1000):
-    for i in range(0, len(participants)):
-        for j in range (i+1,len(participants)):
-            #print (participants[i],participants[j])
-            combatencours=combat(participants[i],participants[j])
-            quiestvainqueur=combatencours.effectue_combat()
-            if quiestvainqueur==participants[i]:
-                resultats[i][j]+=1
-            else:
-                resultats[j][i]+=1
-
-
-for k in range (6):
-    print(str(participants[k].classe) +"\t"+ str(resultats[k]))
-        
-        
+    user_answer="a"
+    user_answer=input("Tapez entrée pour générer un tournois ou Q pour quitter le programme.")
+    while user_answer != "Q":
+        #initialisation des participants et des scores
+        participants=[ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1]
+        resultats=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
+        nbround=int(input("Combien de combats souhaitez-vous ?"))
+        #combat
+        for nmbredecombat in range(nbround):
+            for i in range(0, len(participants)):
+                for j in range (i+1,len(participants)):
+                    #print (participants[i],participants[j])
+                    combatencours=combat(participants[i],participants[j])
+                    quiestvainqueur=combatencours.effectue_combat()
+                    if quiestvainqueur==participants[i]:
+                        resultats[i][j]+=1
+                    else:
+                        resultats[j][i]+=1
+        #affiche les resultats
+        for k in range (6):
+            print(str(participants[k].classe) +"\t"+ str(resultats[k]))                    
+        user_answer = input("Tapez entrée pour générer un tournois ou Q pour quitter le programme.")
 
 
         
