@@ -207,30 +207,25 @@ class combat():
 # fonctions pour le programme
 #------
 
+def bannieredebutprogramme():
+    #a afficher au début
+    print("-------------------------------------------------------------------")
+    print("Bienvenue dans mon programme de simulation de combat de l'oeil noir")
+    print("___________________________________________________________________")
+    print("")
 
-
-
-#-----------
-# déroulement du programme
-#--------     
-
-if __name__=="__main__":
+def genererlesmonstres():
     #générer les instances de monstre à partir des objets
+    global ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1
     ork1=ork()   
     gobelin1=gobelin()
     ogre1=ogre()
     troll1=troll()
     kobold1=kobold()
     dragonvolant1=dragon_volant()
-    print("-------------------------------------------------------------------")
-    print("Bienvenue dans mon programme de simulation de combat de l'oeil noir")
-    print("___________________________________________________________________")
-    print("")
 
-    user_answer="a"
-    user_answer=input("Que voulez vous faire : \n un tournois (taper 1) ou quitter (taper Q) \n")
-    while user_answer != "Q":
-        #initialisation des participants et des scores
+def tournoisentremonstre():
+    #initialisation des participants et des scores
         participants=[ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1]
         resultats=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
         nbround=int(input("Combien de combats souhaitez-vous ?"))
@@ -247,7 +242,22 @@ if __name__=="__main__":
                         resultats[j][i]+=1
         #affiche les resultats
         for k in range (6):
-            print(str(participants[k].classe) +"\t"+ str(resultats[k]))                    
+            print(str(participants[k].classe) +"\t"+ str(resultats[k]))
+
+
+#-----------
+# déroulement du programme
+#--------     
+
+if __name__=="__main__":
+
+    genererlesmonstres()
+    bannieredebutprogramme()
+    
+    user_answer="a"
+    user_answer=input("Que voulez vous faire : \n un tournois (taper 1) ou quitter (taper Q) \n")
+    while user_answer != "Q":
+        tournoisentremonstre()                    
         user_answer = input("Que voulez vous faire : \n un tournois (taper 1) ou quitter (taper Q) \n")
 
 
