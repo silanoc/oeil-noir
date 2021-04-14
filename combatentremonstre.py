@@ -216,13 +216,35 @@ def bannieredebutprogramme():
 
 def genererlesmonstres():
     #générer les instances de monstre à partir des objets
-    global ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1
+    global ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1, listemonstre
     ork1=ork()   
     gobelin1=gobelin()
     ogre1=ogre()
     troll1=troll()
     kobold1=kobold()
     dragonvolant1=dragon_volant()
+    listemonstre=[ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1]
+
+def combatsimple():
+    #choisir les deux participants
+    """ tentative d'automatisation qui loupe
+    dicomonstre={}
+    dicomonstrelisible={}
+    for i in range(len(listemonstre)):
+        print(listemonstre)
+        dicomonstre[i] = listemonstre[i]
+        dicomonstrelisible[i] = listemonstre[i]
+    print(dicomonstre)
+    print(dicomonstrelisible)"""
+    choix1=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1")
+    choix2=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1")
+    participant1=listemonstre[int(choix1)-1]
+    participant2=listemonstre[int(choix2)-1]
+    #combat en lui même
+    combatencours=combat(participant1,participant2)
+    quiestvainqueur=combatencours.effectue_combat()
+    #affiche le résultat
+    print(quiestvainqueur) #avec un affichage pas propre
 
 def tournoisentremonstre():
     #initialisation des participants et des scores
@@ -250,30 +272,22 @@ def passer():
 # déroulement du programme
 #--------     
 
+"""
 if __name__=="__main__":
 
     genererlesmonstres()
     bannieredebutprogramme()
     
     user_answer="a"
-    user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
+    user_answer=input("Que voulez vous faire : \n un combat entre 2 monstre à choisir (tapez 1) \n un tournois (tapez 2)\n ou quitter (tapez Q ou q) \n")
     while user_answer != "Q":
-        menu={"1":tournoisentremonstre, "q":exit, "Q":exit}
-        #menu[user_answer]()
+        menu={"1":combatsimple,"2":tournoisentremonstre, "q":exit, "Q":exit}
         menu.get(user_answer,passer)()
-        user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
-        """
-        if user_answer=="1":
-            user_answer="a" #pour éviter boucle
-            tournoisentremonstre()            
-        elif user_answer=="Q": #or user_answer=="q": pourquoi ça bug !!!
-            exit()
-        else:                    
-            user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
-        """
+        user_answer=input("Que voulez vous faire : \n un combat entre 2 monstre à choisir (tapez 1) \n un tournois (tapez 2)\n ou quitter (taper Q ou q) \n")
         
+  """      
                
-##Test pour 1 combat
-##
-##combatencours=combat(ork1,gobelin1)
-##combatencours.effectue_combat()
+#Test pour 1 combat
+genererlesmonstres()
+combatencours=combat(ork1,gobelin1)
+combatencours.effectue_combat()
