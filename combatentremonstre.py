@@ -255,11 +255,15 @@ if __name__=="__main__":
     bannieredebutprogramme()
     
     user_answer="a"
-    user_answer=input("Que voulez vous faire : \n un tournois (taper 1) ou quitter (taper Q) \n")
+    user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
     while user_answer != "Q":
-        tournoisentremonstre()                    
-        user_answer = input("Que voulez vous faire : \n un tournois (taper 1) ou quitter (taper Q) \n")
-
+        if user_answer=="1":
+            user_answer="a" #pour éviter boucle
+            tournoisentremonstre()            
+        elif user_answer=="Q" or user_answer=="q":
+            exit()
+        else:                    
+            user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
 
         
                
