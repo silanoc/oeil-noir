@@ -236,8 +236,8 @@ def combatsimple():
         dicomonstrelisible[i] = listemonstre[i]
     print(dicomonstre)
     print(dicomonstrelisible)"""
-    choix1=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1")
-    choix2=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1")
+    choix1=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
+    choix2=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
     participant1=listemonstre[int(choix1)-1]
     participant2=listemonstre[int(choix2)-1]
     #combat en lui même
@@ -268,11 +268,11 @@ def tournoisentremonstre():
 
 def passer():
     pass
+
 #-----------
 # déroulement du programme
 #--------     
 
-"""
 if __name__=="__main__":
 
     genererlesmonstres()
@@ -284,10 +284,3 @@ if __name__=="__main__":
         menu={"1":combatsimple,"2":tournoisentremonstre, "q":exit, "Q":exit}
         menu.get(user_answer,passer)()
         user_answer=input("Que voulez vous faire : \n un combat entre 2 monstre à choisir (tapez 1) \n un tournois (tapez 2)\n ou quitter (taper Q ou q) \n")
-        
-  """      
-               
-#Test pour 1 combat
-genererlesmonstres()
-combatencours=combat(ork1,gobelin1)
-combatencours.effectue_combat()
