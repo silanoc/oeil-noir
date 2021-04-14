@@ -244,7 +244,8 @@ def tournoisentremonstre():
         for k in range (6):
             print(str(participants[k].classe) +"\t"+ str(resultats[k]))
 
-
+def passer():
+    pass
 #-----------
 # déroulement du programme
 #--------     
@@ -257,14 +258,19 @@ if __name__=="__main__":
     user_answer="a"
     user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
     while user_answer != "Q":
+        menu={"1":tournoisentremonstre, "q":exit, "Q":exit}
+        #menu[user_answer]()
+        menu.get(user_answer,passer)()
+        user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
+        """
         if user_answer=="1":
             user_answer="a" #pour éviter boucle
             tournoisentremonstre()            
-        elif user_answer=="Q" or user_answer=="q":
+        elif user_answer=="Q": #or user_answer=="q": pourquoi ça bug !!!
             exit()
         else:                    
             user_answer=input("Que voulez vous faire : \n un tournois (taper 1)\n ou quitter (taper Q ou q) \n")
-
+        """
         
                
 ##Test pour 1 combat
