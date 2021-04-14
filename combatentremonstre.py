@@ -203,6 +203,13 @@ class combat():
                         return gagnant                  
                         break                   
 
+#------
+# fonctions pour le programme
+#------
+
+
+
+
 #-----------
 # déroulement du programme
 #--------     
@@ -215,9 +222,13 @@ if __name__=="__main__":
     troll1=troll()
     kobold1=kobold()
     dragonvolant1=dragon_volant()
+    print("-------------------------------------------------------------------")
+    print("Bienvenue dans mon programme de simulation de combat de l'oeil noir")
+    print("___________________________________________________________________")
+    print("")
 
     user_answer="a"
-    user_answer=input("Tapez entrée pour générer un tournois ou Q pour quitter le programme.")
+    user_answer=input("Que voulez vous faire : \n un tournois (taper 1) ou quitter (taper Q) \n")
     while user_answer != "Q":
         #initialisation des participants et des scores
         participants=[ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1]
@@ -237,7 +248,7 @@ if __name__=="__main__":
         #affiche les resultats
         for k in range (6):
             print(str(participants[k].classe) +"\t"+ str(resultats[k]))                    
-        user_answer = input("Tapez entrée pour générer un tournois ou Q pour quitter le programme.")
+        user_answer = input("Que voulez vous faire : \n un tournois (taper 1) ou quitter (taper Q) \n")
 
 
         
