@@ -6,7 +6,7 @@
 #simulateur de combat autour du JdR l'oeil noir
 #auteur : silanoc
 #début sur téléphone portable : juillet 2019
-#améklioration : avril 2021
+#amélioration : avril 2021
 #version 1
 #--------------------
 
