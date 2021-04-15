@@ -1,88 +1,83 @@
 [
-{
-"classe":"ork",
-"courage":8,
-"attaque":9,
-"parade":7,
-"pvmax":8,
-"pvencours":"pvmax",
-"valeur_protection":2,
-"degat":"1d+4",
-"nb_de_degat":1,
-"degat_bonus":4,
-"classedemonstre":8
-}
-,
-{
-"classe":"gobelin",
-"courage":5,
-"attaque":7,
-"parade":6,
-"pvmax":12,
-"pvencours":"pvmax",
-"valeur_protection":2,
-"degat":"1d+2",
-"nb_de_degat":1,
-"degat_bonus":2,
-"classedemonstre":5
-}
-,
-{
-"classe":"ogre",
-"courage":22,
-"attaque":6,
-"parade":5,
-"pvmax":40,
-"pvencours":"pvmax",
-"valeur_protection":3,
-"degat":"2d+4",
-"nb_de_degat":2,
-"degat_bonus":4,
-"classedemonstre":18
-}
-,
-{
-"classe":"troll",
-"courage":25,
-"attaque":8,
-"parade":8,
-"pvmax":50,
-"pvencours":"pvmax",
-"valeur_protection":3,
-"#degat":"3d",
-"nb_de_degat":3,
-"degat_bonus":0,
-"classedemonstre":30
-}
-,
-{
-"classe":"kobold",
-"courage":10,
-"attaque":16,
-"parade":4,
-"pvmax":20,
-"pvencours":"pvmax",
-"valeur_protection":1,
-"degat":"1d",
-"nb_de_degat":1,
-"degat_bonus":0,
-"classedemonstre":15
-}
-,
-{
-"classe":"dragon volant",
-"courage":20,
-"attaque":7,
-"parade":5,
-"pvmax":50,
-"pvencours":"pvmax",
-"valeur_protection":4,
-"degat":"1d+4",
-"griffe":"1d",
-"dent":"2d",
-"queue":"1d",
-"nb_de_degat":2,
-"degat_bonus":0,
-"classedemonstre":50
-}
+    {
+        "classe":"ork",
+        "courage":8,
+        "attaque":9,
+        "parade":7,
+        "pvmax":8,
+        "pvencours":"pvmax",
+        "valeur_protection":2,
+        "degat":"1d+4",
+        "nb_de_degat":1,
+        "degat_bonus":4,
+        "classedemonstre":8
+    },
+    {
+        "classe":"gobelin",
+        "courage":5,
+        "attaque":7,
+        "parade":6,
+        "pvmax":12,
+        "pvencours":"pvmax",
+        "valeur_protection":2,
+        "degat":"1d+2",
+        "nb_de_degat":1,
+        "degat_bonus":2,
+        "classedemonstre":5
+    },
+    {
+        "classe":"ogre",
+        "courage":22,
+        "attaque":6,
+        "parade":5,
+        "pvmax":40,
+        "pvencours":"pvmax",
+        "valeur_protection":3,
+        "degat":"2d+4",
+        "nb_de_degat":2,
+        "degat_bonus":4,
+        "classedemonstre":18
+    },
+    {
+        "classe":"troll",
+        "courage":25,
+        "attaque":8,
+        "parade":8,
+        "pvmax":50,
+        "pvencours":"pvmax",
+        "valeur_protection":3,
+        "#degat":"3d",
+        "nb_de_degat":3,
+        "degat_bonus":0,
+        "classedemonstre":30
+    },
+    {
+        "classe":"kobold",
+        "courage":10,
+        "attaque":16,
+        "parade":4,
+        "pvmax":20,
+        "pvencours":"pvmax",
+        "valeur_protection":1,
+        "degat":"1d",
+        "nb_de_degat":1,
+        "degat_bonus":0,
+        "classedemonstre":15
+    },
+    {
+        "classe":"dragon volant",
+        "courage":20,
+        "attaque":7,
+        "parade":5,
+        "pvmax":50,
+        "pvencours":"pvmax",
+        "valeur_protection":4,
+        "degat":"1d+4",
+        "griffe":"1d",
+        "dent":"2d",
+        "queue":"1d",
+        "nb_de_degat":2,
+        "degat_bonus":0,
+        "classedemonstre":50
+    }
 ]
