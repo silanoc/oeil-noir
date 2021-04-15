@@ -5,7 +5,8 @@
 #------------------
 #simulateur de combat autour du JdR l'oeil noir
 #auteur : silanoc
-#sur téléphone portable - juillet 2019
+#début sur téléphone portable : juillet 2019
+#améklioration : avril 2021
 #version 1
 #--------------------
 
@@ -209,8 +210,9 @@ class combat():
 
 def bannieredebutprogramme():
     #a afficher au début
-    print("-------------------------------------------------------------------")
+    print("__________________________________________________________________\n")
     print("Bienvenue dans mon programme de simulation de combat de l'oeil noir")
+    print("par Silanoc, avril 2021, version 1")
     print("___________________________________________________________________")
     print("")
     print("@@@######======*******+++++++::::::::::::::::::::::+++++++*******======######@@\n@@@@######======*******+++++++::::::::::::::::::::+++++++*******======######@@@\n@@@@@######======*******+++++*=@WWWWWWWWWWWWWW@#*+++++++*******======######@@@@\n@@@@@#######======*******#WWWWWWWWWWWWWWWWWWWWWWWWWW@=********======#######@@@@\n@@@@@@#######=======*=@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#***=======#######@@@@@\nW@@@@@@#######=====@WWWWWWWWWWW#=+:---------:*#WWWWWWWWWWWW#======#######@@@@@@\nWW@@@@@@########=@WWWWWWWWW=+++::::----...----:::+*#WWWWWWWWW@==########@@@@@@W\nWWW@@@@@@@#####@WWWWWWWW#***++++::::---------::::++++*#WWWWWWWW@######@@@@@@@WW\nWWWW@@@@@@@###WWWWWWWW===****++++:::::----::::::++++****=@WWWWWWW###@@@@@@@@WWW\nWWWWW@@@@@@@@WWWWWWW##====****+++++::::::::::++++++****====@WWWWWW@@@@@@@@@WWWW\nWWWWWWW@@@@@WWWWWW@####====*****++++++++++++++++*****=====###@WWWWW@@@@@@WWWWWW\nWWWWWWWWW@@WWWWWW@@@####=====*******++++++++*******=====####@@@WWWWWWW@WWWWWWWW\nWWWWWWWWWWWWWWWWWW@@@@####=======***************======#####@@@WWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWW@WWWWWW@@@@#####======================######@@@WWWWWWWWWWW@@WWWWWW\nWWWWWWWWWWW#---:+@WWWW@@@@#########===========########@@@WWW@+::::::::+@WWWWWWW\nWWWWWWWWWWWW@:-----*W@WWW@@@@@####################@@@@@W#@*-----:=#WWWWWWWWWWWW\nWWWWWWWWWWWWWW#------:#@#@WW@@@@@@@@@@@@@@@@@@@@@@@@W#=@:----:@WWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWW=-------+@W@@WWWW@@@@@@@@@@@@@@@WW@=#=-----+@WWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWW@:-------:#WWWWWWWWWWWWWWWWWWW@@*------*WWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWW=---------:=@WWWWWWWWWWW#+-------:#WWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWW@+-.........------.........:#WWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWW@=:...............-+#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW@@@@@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n(c) 2021 topster.de############################################################\n")
@@ -228,32 +230,25 @@ def genererlesmonstres():
 
 def combatsimple():
     #choisir les deux participants
-    #for attr_name, attr_value in agent_attributes.items():
-    #        setattr(self, attr_name, attr_value)
-    #tentative d'automatisation qui loupe
     dicomonstre={}
     dicomonstrelisible={}
-    print(listemonstre)
     for i in range(len(listemonstre)):
         dicomonstre[i] = listemonstre[i]
         dicomonstrelisible[i] = listemonstre[i].classe
-    print(dicomonstre)
-    #print(dicomonstrelisible)
-    
-    #choix1=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
-    #choix2=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
-    choix1=input(dicomonstrelisible)
-    choix2=input(dicomonstrelisible)
-    #participant1=listemonstre[int(choix1)-1]
-    #participant2=listemonstre[int(choix2)-1]
+    choix1 = "a" 
+    choix2 = "a"
+    while choix1 not in ["0","1","2","3","4","5"] or choix2 not in ["0","1","2","3","4","5"]: 
+        print("Entrez le chiffre correspondant au 1er monstre")
+        choix1=input(dicomonstrelisible)
+        print("Entrez le chiffre correspondant au 2ème monstre")
+        choix2=input(dicomonstrelisible)
     participant1=dicomonstre[int(choix1)]
     participant2=dicomonstre[int(choix2)]
-    
     #combat en lui même
     combatencours=combat(participant1,participant2)
     quiestvainqueur=combatencours.effectue_combat()
     #affiche le résultat
-    print(quiestvainqueur.classe) #avec un affichage pas propre
+    print("le vainqueur est : " + quiestvainqueur.classe + "\n")
 
 def tournoisentremonstre():
     #initialisation des participants et des scores
@@ -278,6 +273,10 @@ def tournoisentremonstre():
 def passer():
     pass
 
+def fin():
+    print("Merci d'avoir utilisé mon programme. A une prochaine fois.")
+    exit()
+
 #-----------
 # déroulement du programme
 #--------     
@@ -290,6 +289,6 @@ if __name__=="__main__":
     user_answer="a"
     user_answer=input("Que voulez vous faire : \n un combat entre 2 monstre à choisir (tapez 1) \n un tournois (tapez 2)\n ou quitter (tapez Q ou q) \n")
     while user_answer != "Q":
-        menu={"1":combatsimple,"2":tournoisentremonstre, "q":exit, "Q":exit}
+        menu={"1":combatsimple,"2":tournoisentremonstre, "q":fin, "Q":fin}
         menu.get(user_answer,passer)()
         user_answer=input("Que voulez vous faire : \n un combat entre 2 monstre à choisir (tapez 1) \n un tournois (tapez 2)\n ou quitter (taper Q ou q) \n")
