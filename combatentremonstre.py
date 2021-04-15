@@ -228,24 +228,32 @@ def genererlesmonstres():
 
 def combatsimple():
     #choisir les deux participants
-    """ tentative d'automatisation qui loupe
+    #for attr_name, attr_value in agent_attributes.items():
+    #        setattr(self, attr_name, attr_value)
+    #tentative d'automatisation qui loupe
     dicomonstre={}
     dicomonstrelisible={}
+    print(listemonstre)
     for i in range(len(listemonstre)):
-        print(listemonstre)
         dicomonstre[i] = listemonstre[i]
-        dicomonstrelisible[i] = listemonstre[i]
+        dicomonstrelisible[i] = listemonstre[i].classe
     print(dicomonstre)
-    print(dicomonstrelisible)"""
-    choix1=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
-    choix2=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
-    participant1=listemonstre[int(choix1)-1]
-    participant2=listemonstre[int(choix2)-1]
+    #print(dicomonstrelisible)
+    
+    #choix1=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
+    #choix2=input("1=ork1, 2=gobelin1, 3=ogre1, 4=troll1, 5=kobold1, 6=dragonvolant1 \n")
+    choix1=input(dicomonstrelisible)
+    choix2=input(dicomonstrelisible)
+    #participant1=listemonstre[int(choix1)-1]
+    #participant2=listemonstre[int(choix2)-1]
+    participant1=dicomonstre[int(choix1)]
+    participant2=dicomonstre[int(choix2)]
+    
     #combat en lui même
     combatencours=combat(participant1,participant2)
     quiestvainqueur=combatencours.effectue_combat()
     #affiche le résultat
-    print(quiestvainqueur) #avec un affichage pas propre
+    print(quiestvainqueur.classe) #avec un affichage pas propre
 
 def tournoisentremonstre():
     #initialisation des participants et des scores
