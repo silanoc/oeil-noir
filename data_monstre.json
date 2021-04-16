@@ -79,5 +79,20 @@
         "nb_de_degat":2,
         "degat_bonus":0,
         "classedemonstre":50
+    },
+    {
+        "classe":"Squelette",
+        "courage":12,
+        "attaque":7,
+        "parade":7,
+        "pvmax":10,
+        "pvencours":"pvmax",
+        "valeur_protection":3,
+        "degat":"1d+3",
+        "nb_de_degat":1,
+        "degat_bonus":3,
+        "classedemonstre":7
     }
+
+
 ]
