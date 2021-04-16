@@ -148,7 +148,7 @@ def combatsimple():
 def tournoisentremonstre():
     #initialisation des participants et des scores
         participants=monstre
-        resultats=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
+        resultats = [[0] * (len(participants)) for _ in range(len(participants))]
         nbround=int(input("Combien de combats souhaitez-vous ?"))
         #combat
         for nmbredecombat in range(nbround):
