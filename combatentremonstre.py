@@ -132,11 +132,16 @@ def combatsimple():
         dicomonstrelisible[i] = monstre[i].classe
     choix1 = "a" 
     choix2 = "a"
-    while choix1 not in ["0","1","2","3","4","5"] or choix2 not in ["0","1","2","3","4","5"]: 
+    #while choix1 not in ["0","1","2","3","4","5","6"] or choix2 not in ["0","1","2","3","4","5","6"]: 
+    listint=range(len(monstre))
+    print(listint)
+    while choix1 not in listint or choix2 not in listint: 
         print("Entrez le chiffre correspondant au 1er monstre")
         choix1=input(dicomonstrelisible)
+        choix1=int(choix1)
         print("Entrez le chiffre correspondant au 2ème monstre")
         choix2=input(dicomonstrelisible)
+        choix2=int(choix2)
     participant1=dicomonstre[int(choix1)]
     participant2=dicomonstre[int(choix2)]
     #combat en lui même
@@ -162,7 +167,7 @@ def tournoisentremonstre():
                     else:
                         resultats[j][i]+=1
         #affiche les resultats
-        for k in range (6):
+        for k in range (len(participants)):
             print(str(participants[k].classe) +"\t"+ str(resultats[k]))
 
 def passer():
