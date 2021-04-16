@@ -11,6 +11,7 @@
 #--------------------
 
 from random import *
+import json
 	
 #--------
 # jet de dé
@@ -29,19 +30,11 @@ def d6():
 # et leurs méthodes
 #---------
 
-class perso:
-    def __init__(self):
-        self.classe="generique"
-        self.courage=10
-        self.attaque=10
-        self.parade=8
-        self.degat=2
-        self.nb_de_degat=1
-        self.degat_bonus=1
-        self.pvmax=10
+class Perso:
+    def __init__(self,**tous_les_monstres):
+        for attr_name, attr_value in tous_les_monstres.items():
+            setattr(self, attr_name, attr_value)
         self.pvencours=self.pvmax
-        self.valeur_protection=1
-        self.classe_de_monstre=1
     def jet_attaque(self):
         jet=d20()
         if jet<self.attaque:
@@ -61,103 +54,6 @@ class perso:
             #print ("parade ratée " + str(jet))
         return reussite_parade 
 
-#-------------#
-#  Bestiaire  #
-#-------------#
-
-class ork(perso):
-    def __init__(self):
-        perso.__init__(self)
-        self.classe="ork"
-        self.courage=8
-        self.attaque=9
-        self.parade=7
-        self.pvmax=8
-        self.pvencours=self.pvmax
-        self.valeur_protection=2
-        #self.degat=1d+4
-        self.nb_de_degat=1
-        self.degat_bonus=4
-        self.classedemonstre=8
-
-class gobelin(perso):
-    def __init__(self):
-        perso.__init__(self)
-        self.classe="gobelin"
-        self.courage=5
-        self.attaque=7
-        self.parade=6
-        self.pvmax=12
-        self.pvencours=self.pvmax
-        self.valeur_protection=2
-        #self.degat=1d+2
-        self.nb_de_degat=1
-        self.degat_bonus=2
-        self.classedemonstre=5
-        
-class ogre(perso):
-    def __init__(self):
-        perso.__init__(self)
-        self.classe="ogre"
-        self.courage=22
-        self.attaque=6
-        self.parade=5
-        self.pvmax=40
-        self.pvencours=self.pvmax
-        self.valeur_protection=3
-        #self.degat=2d+4
-        self.nb_de_degat=2
-        self.degat_bonus=4
-        self.classedemonstre=18
-        
-class troll(perso):
-    def __init__(self):
-        perso.__init__(self)
-        self.classe="troll"
-        self.courage=25
-        self.attaque=8
-        self.parade=8
-        self.pvmax=50
-        self.pvencours=self.pvmax
-        self.valeur_protection=3
-        #self.degat=3d
-        self.nb_de_degat=3
-        self.degat_bonus=0
-        self.classedemonstre=30
-        
-class kobold(perso):
-    def __init__(self):
-        perso.__init__(self)
-        self.classe="kobold"
-        self.courage=10
-        self.attaque=16
-        self.parade=4
-        self.pvmax=20
-        self.pvencours=self.pvmax
-        self.valeur_protection=1
-        #self.degat=1d
-        self.nb_de_degat=1
-        self.degat_bonus=0
-        self.classedemonstre=15
-        
-class dragon_volant(perso):
-    def __init__(self):
-        perso.__init__(self)
-        self.classe="dragon volant"
-        self.courage=20
-        self.attaque=7
-        self.parade=5
-        self.pvmax=50
-        self.pvencours=self.pvmax
-        self.valeur_protection=4
-        #self.degat=1d+4
-        # griffe=1d
-        # dent 2d
-        # queue 1d
-        self.nb_de_degat=2
-        self.degat_bonus=0
-        self.classedemonstre=50
-    
 
 #-----------
 # classe pour générer un combat entre 2 protagonistes
@@ -218,23 +114,22 @@ def bannieredebutprogramme():
     print("@@@######======*******+++++++::::::::::::::::::::::+++++++*******======######@@\n@@@@######======*******+++++++::::::::::::::::::::+++++++*******======######@@@\n@@@@@######======*******+++++*=@WWWWWWWWWWWWWW@#*+++++++*******======######@@@@\n@@@@@#######======*******#WWWWWWWWWWWWWWWWWWWWWWWWWW@=********======#######@@@@\n@@@@@@#######=======*=@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#***=======#######@@@@@\nW@@@@@@#######=====@WWWWWWWWWWW#=+:---------:*#WWWWWWWWWWWW#======#######@@@@@@\nWW@@@@@@########=@WWWWWWWWW=+++::::----...----:::+*#WWWWWWWWW@==########@@@@@@W\nWWW@@@@@@@#####@WWWWWWWW#***++++::::---------::::++++*#WWWWWWWW@######@@@@@@@WW\nWWWW@@@@@@@###WWWWWWWW===****++++:::::----::::::++++****=@WWWWWWW###@@@@@@@@WWW\nWWWWW@@@@@@@@WWWWWWW##====****+++++::::::::::++++++****====@WWWWWW@@@@@@@@@WWWW\nWWWWWWW@@@@@WWWWWW@####====*****++++++++++++++++*****=====###@WWWWW@@@@@@WWWWWW\nWWWWWWWWW@@WWWWWW@@@####=====*******++++++++*******=====####@@@WWWWWWW@WWWWWWWW\nWWWWWWWWWWWWWWWWWW@@@@####=======***************======#####@@@WWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWW@WWWWWW@@@@#####======================######@@@WWWWWWWWWWW@@WWWWWW\nWWWWWWWWWWW#---:+@WWWW@@@@#########===========########@@@WWW@+::::::::+@WWWWWWW\nWWWWWWWWWWWW@:-----*W@WWW@@@@@####################@@@@@W#@*-----:=#WWWWWWWWWWWW\nWWWWWWWWWWWWWW#------:#@#@WW@@@@@@@@@@@@@@@@@@@@@@@@W#=@:----:@WWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWW=-------+@W@@WWWW@@@@@@@@@@@@@@@WW@=#=-----+@WWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWW@:-------:#WWWWWWWWWWWWWWWWWWW@@*------*WWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWW=---------:=@WWWWWWWWWWW#+-------:#WWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWW@+-.........------.........:#WWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWW@=:...............-+#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW@@@@@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n(c) 2021 topster.de############################################################\n")
 
 def genererlesmonstres():
-    #générer les instances de monstre à partir des objets
-    global ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1, listemonstre
-    ork1=ork()   
-    gobelin1=gobelin()
-    ogre1=ogre()
-    troll1=troll()
-    kobold1=kobold()
-    dragonvolant1=dragon_volant()
-    listemonstre=[ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1]
+    global monstre
+    monstre=[]
+    for tous_les_monstres in json.load(open("data_monstre.json")):
+        monstre.append(Perso(**tous_les_monstres))
+    print(monstre)
+    for i in range(len(monstre)):
+        print(monstre[i].classe)
+        print(monstre[i].pvmax)
 
 def combatsimple():
     #choisir les deux participants
     dicomonstre={}
     dicomonstrelisible={}
-    for i in range(len(listemonstre)):
-        dicomonstre[i] = listemonstre[i]
-        dicomonstrelisible[i] = listemonstre[i].classe
+    for i in range(len(monstre)):
+        dicomonstre[i] = monstre[i]
+        dicomonstrelisible[i] = monstre[i].classe
     choix1 = "a" 
     choix2 = "a"
     while choix1 not in ["0","1","2","3","4","5"] or choix2 not in ["0","1","2","3","4","5"]: 
@@ -252,7 +147,7 @@ def combatsimple():
 
 def tournoisentremonstre():
     #initialisation des participants et des scores
-        participants=[ork1, gobelin1, ogre1, troll1, kobold1, dragonvolant1]
+        participants=monstre
         resultats=[[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,0]]
         nbround=int(input("Combien de combats souhaitez-vous ?"))
         #combat
