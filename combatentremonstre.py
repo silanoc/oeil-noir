@@ -132,9 +132,7 @@ def combatsimple():
         dicomonstrelisible[i] = monstre[i].classe
     choix1 = "a" 
     choix2 = "a"
-    #while choix1 not in ["0","1","2","3","4","5","6"] or choix2 not in ["0","1","2","3","4","5","6"]: 
     listint=range(len(monstre))
-    print(listint)
     while choix1 not in listint or choix2 not in listint: 
         print("Entrez le chiffre correspondant au 1er monstre")
         choix1=input(dicomonstrelisible)
