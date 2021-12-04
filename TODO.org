@@ -17,10 +17,11 @@
 - [X] pouvoir rejouer
 - [ ] pouvoir choisir qui participe
 - [ ] ajouter des tests simples
-
 - [ ] rendre les combats verbeux
+
 *  Améliorations 
-- [ ] classe héros pour coup du maitre
+- [ ] faire une bibliotèque pour les lancer de dé et le utiliser dans plusieurs sous programmes : combat, générateur de perso...
+- [ ] classe héros pour coup du maître
 - [ ] classe humanoide, animaux pour gérer armes (facteur de rupture, maladresse armures, malus armes...)
 - [ ] mettre quelques héros dans les combattant-e-s possibles
 - [ ] mettre les monstres, hèros, armes... dans des fichier json pour rendre plus lisible et utilisable dans d'autre programmes/langages
