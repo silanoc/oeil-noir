@@ -12,18 +12,8 @@
 from random import *
 import json
 	
-#--------
-# jet de dé
-#---------
-	
-def d20():
-    a  =  randint(1,20)
-    return a
-    
-def d6():
-    a  =  randint(1,6)
-    return a
-
+from lanceur_de import d6, d20 
+ 
 #----------
 # classes pour générer les personnages 
 # et leurs méthodes

@@ -2,10 +2,11 @@
 # coding: utf-8
 
 from random import *
+from lanceur_de import d6, d20
 
-def d6():
-    a  = randint(1, 6)
-    return a
+#def d6():
+#    a  = randint(1, 6)
+ #   return a
 
 class heros:
     def __init__(self):
