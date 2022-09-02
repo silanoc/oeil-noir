@@ -3,7 +3,7 @@
 
 import programme.lanceur_de as lanceur_de
 
-"""Test les lanceur de dé"""
+"""Test les lanceurs de dé"""
 
 def test_d20():
     """Vérifie que le résultat est compris entre 1 et 20 (bornes incluses"""
