@@ -27,6 +27,17 @@ class Test_combatentremonstre():
         monstre2 = combatentremonstre.Perso(pvmax = 10)
         monstre2.pvencours = 10
         assert monstre2.est_vivant() == True 
+    
+    def test_jet_attaque(self):
+        monstre1 = combatentremonstre.Perso(pvmax = 10, attaque = 10)
+        assert monstre1.jet_attaque(5) == True 
+        assert monstre1.jet_attaque(15) == False 
+        
+    def test_jet_parade(self):
+        monstre1 = combatentremonstre.Perso(pvmax = 10, parade = 10)
+        assert monstre1.jet_parade(5) == True 
+        assert monstre1.jet_parade(15) == False 
+        
 
         
         

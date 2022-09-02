@@ -23,33 +23,32 @@ class Perso:
     def __init__(self, **tous_les_monstres):
         """constructeur
         initialise via les valeurs de json
-        attribue les pvencous en fonction de ceux max"""
+        attribue les pvencous en fonction de ceux max
+        """
         for attr_name, attr_value in tous_les_monstres.items():
             setattr(self, attr_name, attr_value)
         self.pvencours: int  =  self.pvmax
         
-    def jet_attaque(self) -> bool:
-        """Fait un test d'attaque avec 1d20.
+    def jet_attaque(self, jet: int = d20()) -> bool:
+        """Defini si l'attaque est réussi, avec un 1d20 en paramètre (la fonction ne fait donc que comparer).
         Réussi si le jet est inférieur à la valeur d'attaque
         
-        :return reussite_attaque
-        :rtype bool"""
-        jet: int = d20()
-        if jet < self.attaque:
-            reussite_attaque = True
-            #print ("attaque reussite " +str(jet))
-        else :
-            reussite_attaque = False
-            #print ("attaque ratée " + str(jet))
-        return reussite_attaque
+        :param int jet: valeur de jet de dé exécuté en paramètre
+        
+        :returns reussite_attaque
+        :rtype bool
+        """
+        return jet < self.attaque
     
-    def jet_parade(self) -> bool:
-        """Fait un test de parade avec 1d20.
+    def jet_parade(self, jet: int = d20()) -> bool:
+        """Fait un test de parade avec 1d20 passé en paramètre.
+        Fonction non refactorisé en 1 ligne, comme jet_attaque, au cas envie de rendre le code bavard.
         Réussi si le jet est inférieur à la valeur de parade
         
-        :return reussite_parade
-        :rtype bool"""
-        jet: int = d20()
+        :returns reussite_parade
+        :rtype bool
+        """
+        #jet: int = d20()
         if jet < self.parade:
             reussite_parade = True
             #print ("parade reussite " +str(jet))
@@ -59,6 +58,11 @@ class Perso:
         return reussite_parade 
     
     def est_vivant(self) -> bool:
+        """regarde la valeur de pvencours. Vivant (donc true) si au mpoins 1 pv
+        
+        :returns True ou False
+        :rtype bool
+        """
         return self.pvencours > 0
 
 
@@ -95,21 +99,23 @@ class combat():
         self.defenseur.pvencours: int = self.defenseur.pvmax
         tour_combat: int = 0  
         while ((self.attaquant.pvencours >= 0) and (self.defenseur.pvencours >= 0)):
+        #while self.attaquant.est_vivant() and self.defenseur.est_vivant():
             tour_combat += 1
             #print("tour :" + str(tour_combat))
-            att = self.attaquant.jet_attaque()
+            att = self.attaquant.jet_attaque(d20())
             if att == True:
-                defe = self.defenseur.jet_parade()
+                defe = self.defenseur.jet_parade(d20())
                 if defe == False:
                     self.defenseur.pvencours -= self.determine_degat(self.attaquant.nb_de_degat, self.attaquant.degat_bonus,self.defenseur.valeur_protection)
                     #print("def pv : " + str(self.defenseur.pvencours))
                     if self.defenseur.pvencours <= 0:
+                    #if not self.defenseur.est_vivant:
                         gagnant = self.attaquant
                         return gagnant
                         break
-            att = self.defenseur.jet_attaque()
+            att = self.defenseur.jet_attaque(d20())
             if att == True:
-                defe = self.attaquant.jet_parade()
+                defe = self.attaquant.jet_parade(d20())
                 if defe == False:
                     self.attaquant.pvencours -= self.determine_degat(self.defenseur.nb_de_degat, self.defenseur.degat_bonus,self.attaquant.valeur_protection)
                     #print ("att pv : "+str(self.attaquant.pvencours))
