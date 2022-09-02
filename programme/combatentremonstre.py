@@ -12,7 +12,7 @@
 from random import *
 import json
 	
-from lanceur_de import d6, d20 
+from programme.lanceur_de import d6, d20 
  
 #----------
 # classes pour générer les personnages 

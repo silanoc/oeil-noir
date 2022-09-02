@@ -2,7 +2,7 @@
 # coding: utf-8
 
 from random import *
-from lanceur_de import d6
+from programme.lanceur_de import d6
 
 class Heros:
     def __init__(self) -> None:
