@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
-import programme.lanceur_de as lanceur_de
+import domaine.lanceur_de as lanceur_de
 
 """Test les lanceurs de dé"""
 
