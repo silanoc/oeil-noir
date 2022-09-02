@@ -20,14 +20,22 @@ from programme.lanceur_de import d6, d20
 #---------
 
 class Perso:
-    def __init__(self,**tous_les_monstres):
+    def __init__(self, **tous_les_monstres):
+        """constructeur
+        initialise via les valeurs de json
+        attribue les pvencous en fonction de ceux max"""
         for attr_name, attr_value in tous_les_monstres.items():
             setattr(self, attr_name, attr_value)
-        self.pvencours  =  self.pvmax
+        self.pvencours: int  =  self.pvmax
         
-    def jet_attaque(self):
-        jet = d20()
-        if jet<self.attaque:
+    def jet_attaque(self) -> bool:
+        """Fait un test d'attaque avec 1d20.
+        Réussi si le jet est inférieur à la valeur d'attaque
+        
+        :return reussite_attaque
+        :rtype bool"""
+        jet: int = d20()
+        if jet < self.attaque:
             reussite_attaque = True
             #print ("attaque reussite " +str(jet))
         else :
@@ -35,9 +43,14 @@ class Perso:
             #print ("attaque ratée " + str(jet))
         return reussite_attaque
     
-    def jet_parade(self):
-        jet = d20()
-        if jet<self.parade:
+    def jet_parade(self) -> bool:
+        """Fait un test de parade avec 1d20.
+        Réussi si le jet est inférieur à la valeur de parade
+        
+        :return reussite_parade
+        :rtype bool"""
+        jet: int = d20()
+        if jet < self.parade:
             reussite_parade = True
             #print ("parade reussite " +str(jet))
         else :
@@ -51,34 +64,43 @@ class Perso:
 #---------
 
 class combat():
-    def __init__(self,joueur1, joueur2):
+    
+    def __init__(self,joueur1: Perso, joueur2: Perso) -> None:
+        """Defini l'attaquant et le défenseur dans un combat.
+        
+        :param Perso joueur1: une instance de Perso
+        :param Perso joueur2: une instance de Perso"""
         self.attaquant = joueur1
         self.defenseur = joueur2
     
-    def determine_degat(self,nbdedegat,valbonus,chiffre_protection):
-        degat = 0
+    def determine_degat(self,nbdedegat: int ,valbonus: int, chiffre_protection: int) -> int:
+        """défini le nmbre de point de dégat du type 2d6+2 - protection d'armure
+        soit [nbdedegat]d6+[valbonus] - [chiffre_protection]
+        Ne peux pas être négatif
+        
+        """
+        degat: int = 0
         for i in range (nbdedegat):
             degat += d6()
-        degat += valbonus
-        degat = degat-chiffre_protection
-        if degat<0:
+        degat = degat + valbonus - chiffre_protection
+        if degat < 0:
             degat = 0
         return degat
     
-    def effectue_combat(self):
-        self.attaquant.pvencours = self.attaquant.pvmax
-        self.defenseur.pvencours = self.defenseur.pvmax
-        tour_combat = 0  
-        while ((self.attaquant.pvencours>= 0) and (self.defenseur.pvencours>= 0)):
-            tour_combat+= 1
+    def effectue_combat(self) -> Perso:
+        self.attaquant.pvencours: int = self.attaquant.pvmax
+        self.defenseur.pvencours: int = self.defenseur.pvmax
+        tour_combat: int = 0  
+        while ((self.attaquant.pvencours >= 0) and (self.defenseur.pvencours >= 0)):
+            tour_combat += 1
             #print("tour :" + str(tour_combat))
             att = self.attaquant.jet_attaque()
             if att == True:
                 defe = self.defenseur.jet_parade()
                 if defe == False:
-                    self.defenseur.pvencours-= self.determine_degat(self.attaquant.nb_de_degat, self.attaquant.degat_bonus,self.defenseur.valeur_protection)
+                    self.defenseur.pvencours -= self.determine_degat(self.attaquant.nb_de_degat, self.attaquant.degat_bonus,self.defenseur.valeur_protection)
                     #print("def pv : " + str(self.defenseur.pvencours))
-                    if self.defenseur.pvencours<= 0:
+                    if self.defenseur.pvencours <= 0:
                         gagnant = self.attaquant
                         return gagnant
                         break
@@ -86,9 +108,9 @@ class combat():
             if att == True:
                 defe = self.attaquant.jet_parade()
                 if defe == False:
-                    self.attaquant.pvencours-= self.determine_degat(self.defenseur.nb_de_degat, self.defenseur.degat_bonus,self.attaquant.valeur_protection)
+                    self.attaquant.pvencours -= self.determine_degat(self.defenseur.nb_de_degat, self.defenseur.degat_bonus,self.attaquant.valeur_protection)
                     #print ("att pv : "+str(self.attaquant.pvencours))
-                    if self.attaquant.pvencours<= 0:
+                    if self.attaquant.pvencours <= 0:
                         gagnant = self.defenseur
                         return gagnant                  
                         break                   
@@ -97,7 +119,7 @@ class combat():
 # fonctions pour le programme
 #------
 
-def bannieredebutprogramme():
+def bannieredebutprogramme() -> None:
     #a afficher au début
     print("__________________________________________________________________\n")
     print("Bienvenue dans mon programme de simulation de combat de l'oeil noir")
@@ -107,7 +129,7 @@ def bannieredebutprogramme():
     print("@@@###### =  =  =  =  =  = *******+++++++::::::::::::::::::::::+++++++******* =  =  =  =  =  = ######@@\n@@@@###### =  =  =  =  =  = *******+++++++::::::::::::::::::::+++++++******* =  =  =  =  =  = ######@@@\n@@@@@###### =  =  =  =  =  = *******+++++* = @WWWWWWWWWWWWWW@#*+++++++******* =  =  =  =  =  = ######@@@@\n@@@@@####### =  =  =  =  =  = *******#WWWWWWWWWWWWWWWWWWWWWWWWWW@ = ******** =  =  =  =  =  = #######@@@@\n@@@@@@####### =  =  =  =  =  =  = * = @WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#*** =  =  =  =  =  =  = #######@@@@@\nW@@@@@@####### =  =  =  =  = @WWWWWWWWWWW# = +:---------:*#WWWWWWWWWWWW# =  =  =  =  =  = #######@@@@@@\nWW@@@@@@######## = @WWWWWWWWW = +++::::----...----:::+*#WWWWWWWWW@ =  = ########@@@@@@W\nWWW@@@@@@@#####@WWWWWWWW#***++++::::---------::::++++*#WWWWWWWW@######@@@@@@@WW\nWWWW@@@@@@@###WWWWWWWW =  =  = ****++++:::::----::::::++++**** = @WWWWWWW###@@@@@@@@WWW\nWWWWW@@@@@@@@WWWWWWW## =  =  =  = ****+++++::::::::::++++++**** =  =  =  = @WWWWWW@@@@@@@@@WWWW\nWWWWWWW@@@@@WWWWWW@#### =  =  =  = *****++++++++++++++++***** =  =  =  =  = ###@WWWWW@@@@@@WWWWWW\nWWWWWWWWW@@WWWWWW@@@#### =  =  =  =  = *******++++++++******* =  =  =  =  = ####@@@WWWWWWW@WWWWWWWW\nWWWWWWWWWWWWWWWWWW@@@@#### =  =  =  =  =  =  = *************** =  =  =  =  =  = #####@@@WWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWW@WWWWWW@@@@##### =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  = ######@@@WWWWWWWWWWW@@WWWWWW\nWWWWWWWWWWW#---:+@WWWW@@@@######### =  =  =  =  =  =  =  =  =  =  = ########@@@WWW@+::::::::+@WWWWWWW\nWWWWWWWWWWWW@:-----*W@WWW@@@@@####################@@@@@W#@*-----: = #WWWWWWWWWWWW\nWWWWWWWWWWWWWW#------:#@#@WW@@@@@@@@@@@@@@@@@@@@@@@@W# = @:----:@WWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWW = -------+@W@@WWWW@@@@@@@@@@@@@@@WW@ = # = -----+@WWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWW@:-------:#WWWWWWWWWWWWWWWWWWW@@*------*WWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWW = ---------: = @WWWWWWWWWWW#+-------:#WWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWW@+-.........------.........:#WWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWW@ = :...............-+#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW@@@@@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW\n(c) 2021 topster.de############################################################\n")
 
 
-def genererlesmonstres():
+def genererlesmonstres() -> None:
     global monstre
     monstre = []
     for tous_les_monstres in json.load(open("programme/data_monstre.json")):
@@ -120,8 +142,8 @@ def genererlesmonstres():
 
 def combatsimple():
     #choisir les deux participants
-    dicomonstre = {}
-    dicomonstrelisible = {}
+    dicomonstre: dict = {}
+    dicomonstrelisible: dict = {}
     for i in range(len(monstre)):
         dicomonstre[i]  =  monstre[i]
         dicomonstrelisible[i]  =  monstre[i].classe
@@ -165,20 +187,20 @@ def tournoisentremonstre():
             print(str(participants[k].classe) +"\t"+ str(resultats[k]))
 
 
-def passer():
+def passer() -> None:
     pass
 
 
-def fin():
+def fin() -> None:
     print("Merci d'avoir utilisé mon programme. A une prochaine fois.")
     exit()
 
 
-def main():
+def main() -> None:
     genererlesmonstres()
     bannieredebutprogramme()
     
-    user_answer = "a"
+    user_answer: int = "a"
     user_answer = input("Que voulez vous faire : \n un combat entre 2 monstre à choisir (tapez 1) \n un tournois (tapez 2)\n ou quitter (tapez Q ou q) \n")
     while user_answer !=  "Q":
         menu = {"1":combatsimple,"2":tournoisentremonstre, "q":fin, "Q":fin}
