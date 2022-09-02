@@ -15,15 +15,17 @@ import programme.combatentremonstre as combatentremonstre
 class Test_combatentremonstre():
     
     def test_existance_monstre(self):
+        """simplement pour tester l'existance de la classe Perso"""
         monstre = combatentremonstre.Perso(pvmax = 10, classe = "ork")
         assert type(monstre.pvencours) is int and monstre.classe == "ork"
         
     def test_est_vivant(self):
-        monstre1 = combatentremonstre.Perso(pvmax = 10, classe = "ork")
+        """Pour tester Perso.est_vivant()"""
+        monstre1 = combatentremonstre.Perso(pvmax = 10)
         monstre1.pvencours = 0
         assert monstre1.est_vivant() == False 
-        monstre2 = combatentremonstre.Perso(pvmax = 10, classe = "ork")
-        monstre2.pvencours = 0
+        monstre2 = combatentremonstre.Perso(pvmax = 10)
+        monstre2.pvencours = 10
         assert monstre2.est_vivant() == True 
 
         

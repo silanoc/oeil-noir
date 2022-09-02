@@ -57,6 +57,9 @@ class Perso:
             reussite_parade = False
             #print ("parade ratée " + str(jet))
         return reussite_parade 
+    
+    def est_vivant(self) -> bool:
+        return self.pvencours > 0
 
 
 #-----------
