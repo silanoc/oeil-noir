@@ -173,12 +173,8 @@ def fin():
     print("Merci d'avoir utilisé mon programme. A une prochaine fois.")
     exit()
 
-#-----------
-# déroulement du programme
-#--------     
 
-if __name__ == "__main__":
-
+def main():
     genererlesmonstres()
     bannieredebutprogramme()
     
@@ -188,3 +184,10 @@ if __name__ == "__main__":
         menu = {"1":combatsimple,"2":tournoisentremonstre, "q":fin, "Q":fin}
         menu.get(user_answer,passer)()
         user_answer = input("Que voulez vous faire : \n un combat entre 2 monstre à choisir (tapez 1) \n un tournois (tapez 2)\n ou quitter (taper Q ou q) \n")
+    
+#-----------
+# déroulement du programme
+#--------     
+
+if __name__ == "__main__":
+    main()
