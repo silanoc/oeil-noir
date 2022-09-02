@@ -34,6 +34,13 @@ class Heros:
         if self.intelligence >= 12 and self.charisme >=  12:
             liste_choix.append("magicien")
         return liste_choix
+    
+    def defini_au_hasard_la_classe(self, liste) -> None:
+        """choisi au hasard dans la liste des metiers possible celui retenu.
+        L'écrit dans self.classe_metier 
+        
+        :param list[str] liste : liste de métier possible"""
+        self.classe_metier = liste[randint(0,len(liste) - 1)]
 
 
 def generer_10_perso():
@@ -43,7 +50,9 @@ def generer_10_perso():
         perso1.valeur_aleatoire_comp()
         print(perso1.courage, perso1.intelligence, perso1.charisme, perso1.adresse, perso1.force)
         classes_possible = perso1.chercher_les_choix_possibles()
-        print(f"C'est donc un {classes_possible}")
+        print(f"C'est potentiellement un {classes_possible}")
+        perso1.defini_au_hasard_la_classe(classes_possible)
+        print(f"C'est plus précisement un {perso1.classe_metier}")
         
 if __name__ == "__main__":
     generer_10_perso()
