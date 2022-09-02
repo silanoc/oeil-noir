@@ -68,8 +68,8 @@ class combat():
     def determine_degat(self,nbdedegat,valbonus,chiffre_protection):
         degat = 0
         for i in range (nbdedegat):
-            degat+= d6()
-        degat+= valbonus
+            degat += d6()
+        degat += valbonus
         degat = degat-chiffre_protection
         if degat<0:
             degat = 0
@@ -120,7 +120,7 @@ def bannieredebutprogramme():
 def genererlesmonstres():
     global monstre
     monstre = []
-    for tous_les_monstres in json.load(open("data_monstre.json")):
+    for tous_les_monstres in json.load(open("programme/data_monstre.json")):
         monstre.append(Perso(**tous_les_monstres))
     print(monstre)
     for i in range(len(monstre)):
