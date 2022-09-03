@@ -3,6 +3,7 @@
 Auteur : silanoc
 date création : 5 avril 2021
 dernière modification : 15 avril 2021
+refonte totale: début septembre 2022
 
 ## Sources du jeu
 Les codes sont faits à partir du jeu de rôle l'œil noir, plus précisement à partir des règles de la 1ère édition. Tout simplement parce que c'est à partir de cela que j'ai découvert le JDR.
@@ -29,3 +30,25 @@ Exemple de résultat obtenu :
 |dragon volant	|997| 1000|361| 31| 1000| 0|
 
 S'il n'y a pas d'erreur dans le code, c'est donc le troll le plus puissant !
+
+## Refonte en architecture hexagonale
+
+```
+oeil noir
+|
++-- domaine
+|   |
+|   +-- entite.py - contient la classe entitée, qui permet de générer des héros ou monstres
+|   +-- generation_perso.py - pour génere au hasard un héros
+|   +-- lanceur_de.py - pour lander de d6 ou d20
+|
++-- interface
+|   |
+|   +-- console
+|   +-- json - les données (caractèristiques des monstres...) sont dans des fichiers json
+|   +-- tests - 1 fichier de test par fichier dans le domaine
+|
++-- programme - à vider tranquillement
+    |
+    +-- combatentremonstre.py - le programme initial, qui est transformé et amélioré
+```
