@@ -7,8 +7,8 @@ import domaine.lanceur_de as lanceur_de
 
 def test_d20():
     """Vérifie que le résultat est compris entre 1 et 20 (bornes incluses"""
-    chiffre = lanceur_de.d20()
     for i in range(100):
+        chiffre = lanceur_de.d20()
         assert 0 < chiffre < 21
     
 def test_d6():
