@@ -13,58 +13,7 @@ from random import *
 import json
 	
 from domaine.lanceur_de import d6, d20 
- 
-#----------
-# classes pour générer les personnages 
-# et leurs méthodes
-#---------
-
-class Perso:
-    def __init__(self, **tous_les_monstres):
-        """constructeur
-        initialise via les valeurs de json
-        attribue les pvencous en fonction de ceux max
-        """
-        for attr_name, attr_value in tous_les_monstres.items():
-            setattr(self, attr_name, attr_value)
-        self.pvencours: int  =  self.pvmax
-        
-    def jet_attaque(self, jet: int = d20()) -> bool:
-        """Defini si l'attaque est réussi, avec un 1d20 en paramètre (la fonction ne fait donc que comparer).
-        Réussi si le jet est inférieur à la valeur d'attaque
-        
-        :param int jet: valeur de jet de dé exécuté en paramètre
-        
-        :returns reussite_attaque
-        :rtype bool
-        """
-        return jet < self.attaque
-    
-    def jet_parade(self, jet: int = d20()) -> bool:
-        """Fait un test de parade avec 1d20 passé en paramètre.
-        Fonction non refactorisé en 1 ligne, comme jet_attaque, au cas envie de rendre le code bavard.
-        Réussi si le jet est inférieur à la valeur de parade
-        
-        :returns reussite_parade
-        :rtype bool
-        """
-        #jet: int = d20()
-        if jet < self.parade:
-            reussite_parade = True
-            #print ("parade reussite " +str(jet))
-        else :
-            reussite_parade = False
-            #print ("parade ratée " + str(jet))
-        return reussite_parade 
-    
-    def est_vivant(self) -> bool:
-        """regarde la valeur de pvencours. Vivant (donc true) si au mpoins 1 pv
-        
-        :returns True ou False
-        :rtype bool
-        """
-        return self.pvencours > 0
-
+from domaine.entite import Entite as Entite
 
 #-----------
 # classe pour générer un combat entre 2 protagonistes
@@ -72,11 +21,11 @@ class Perso:
 
 class combat():
     
-    def __init__(self,joueur1: Perso, joueur2: Perso) -> None:
+    def __init__(self,joueur1: Entite, joueur2: Entite) -> None:
         """Defini l'attaquant et le défenseur dans un combat.
         
-        :param Perso joueur1: une instance de Perso
-        :param Perso joueur2: une instance de Perso"""
+        :param Entite joueur1: une instance de Entite
+        :param Entite joueur2: une instance de Entite"""
         self.attaquant = joueur1
         self.defenseur = joueur2
     
@@ -94,7 +43,7 @@ class combat():
             degat = 0
         return degat
     
-    def effectue_combat(self) -> Perso:
+    def effectue_combat(self) -> Entite:
         self.attaquant.pvencours: int = self.attaquant.pvmax
         self.defenseur.pvencours: int = self.defenseur.pvmax
         tour_combat: int = 0  
@@ -142,7 +91,7 @@ def genererlesmonstres() -> None:
     global monstre
     monstre = []
     for tous_les_monstres in json.load(open("interface/json/data_monstre.json")):
-        monstre.append(Perso(**tous_les_monstres))
+        monstre.append(Entite(**tous_les_monstres))
     print(monstre)
     for i in range(len(monstre)):
         print(monstre[i].classe)
