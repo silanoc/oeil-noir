@@ -141,7 +141,7 @@ def bannieredebutprogramme() -> None:
 def genererlesmonstres() -> None:
     global monstre
     monstre = []
-    for tous_les_monstres in json.load(open("programme/data_monstre.json")):
+    for tous_les_monstres in json.load(open("interface/json/data_monstre.json")):
         monstre.append(Perso(**tous_les_monstres))
     print(monstre)
     for i in range(len(monstre)):

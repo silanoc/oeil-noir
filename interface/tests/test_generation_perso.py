@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
-import programme.generation_perso as generation_perso
+import domaine.generation_perso as generation_perso
 
 """Test la génération de perso"""
 
