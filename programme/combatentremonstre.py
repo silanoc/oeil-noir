@@ -14,11 +14,12 @@ import json
 	
 from domaine.lanceur_de import d6, d20 
 from domaine.entite import Entite as Entite
+from domaine.combat import Combat as Combat
 
 #-----------
 # classe pour générer un combat entre 2 protagonistes
 #---------
-
+'''
 class combat():
     
     def __init__(self,joueur1: Entite, joueur2: Entite) -> None:
@@ -72,7 +73,7 @@ class combat():
                         gagnant = self.defenseur
                         return gagnant                  
                         break                   
-
+'''
 #------
 # fonctions pour le programme
 #------
@@ -118,7 +119,7 @@ def combatsimple():
     participant1 = dicomonstre[int(choix1)]
     participant2 = dicomonstre[int(choix2)]
     #combat en lui même
-    combatencours = combat(participant1,participant2)
+    combatencours = Combat(participant1,participant2)
     quiestvainqueur = combatencours.effectue_combat()
     #affiche le résultat
     print("le vainqueur est : " + quiestvainqueur.classe + "\n")
@@ -134,7 +135,7 @@ def tournoisentremonstre():
             for i in range(0, len(participants)):
                 for j in range (i+1,len(participants)):
                     #print (participants[i],participants[j])
-                    combatencours = combat(participants[i],participants[j])
+                    combatencours = Combat(participants[i],participants[j])
                     quiestvainqueur = combatencours.effectue_combat()
                     if quiestvainqueur == participants[i]:
                         resultats[i][j]+= 1
