@@ -20,6 +20,14 @@ class Combat():
         Ne peux pas être négatif
         
         """
+        degat: list[int] = [d6() for i in range(nbdedegat)]
+        complement: list[int] = [valbonus, chiffre_protection * -1 ]
+        degat.extend(complement)
+        totaldegat: int = sum(degat)
+        if totaldegat < 0 : totaldegat = 0
+        return totaldegat
+        
+        """
         degat: int = 0
         for i in range (nbdedegat):
             degat += d6()
@@ -27,6 +35,7 @@ class Combat():
         if degat < 0:
             degat = 0
         return degat
+        """
     
     def effectue_combat(self) -> Entite:
         self.attaquant.pvencours: int = self.attaquant.pvmax
