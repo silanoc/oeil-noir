@@ -2,6 +2,7 @@
 # coding: utf-8
 
 from domaine.lanceur_de import d20
+import domaine.port_json
 
 #----------
 # classes pour générer les personnages 
@@ -54,3 +55,11 @@ class Entite:
         :rtype bool
         """
         return self.pvencours > 0
+    
+
+def generer_des_monstre() -> list:
+    dico_monstre: dict = domaine.port_json.mettre_le_contenu_json_dans_dico()
+    liste_monstre: list = []
+    for tous_les_item in dico_monstre:
+        liste_monstre.append(Entite(**tous_les_item))
+    return liste_monstre

@@ -10,12 +10,13 @@
 #--------------------
 
 from random import *
-import json
+#import json
 	
-from domaine.lanceur_de import d6, d20 
-from domaine.entite import Entite as Entite
-from domaine.combat import Combat as Combat
+#from domaine.lanceur_de import d6, d20 
+#from domaine.entite import Entite as Entite
+#from domaine.combat import Combat as Combat
 
+from domaine.port_console import recupere_la_liste_des_monstre
 
 #------
 # fonctions pour le programme
@@ -61,9 +62,10 @@ WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 
 def genererlesmonstres() -> None:
     global monstre
-    monstre = []
-    for tous_les_monstres in json.load(open("interface/json/data_monstre.json")):
-        monstre.append(Entite(**tous_les_monstres))
+    monstre = recupere_la_liste_des_monstre()
+    #monstre = []
+    #for tous_les_monstres in json.load(open("interface/json/data_monstre.json")):
+    #    monstre.append(Entite(**tous_les_monstres))
     print(monstre)
     for i in range(len(monstre)):
         print(monstre[i].classe)
