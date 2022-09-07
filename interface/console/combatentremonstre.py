@@ -16,7 +16,7 @@ from random import *
 #from domaine.entite import Entite as Entite
 from domaine.combat import Combat as Combat
 
-from domaine.port_console import recupere_la_liste_des_monstre
+import domaine.port_console as port_console
 
 #------
 # fonctions pour le programme
@@ -45,7 +45,7 @@ par Silanoc, avril 2021, version 1
 def genererlesmonstres() -> None:
     """Via port_console, récupére dans une lsite toutes les instances de monstres possible à avoir"""
     global monstre
-    monstre = recupere_la_liste_des_monstre()
+    monstre = port_console.recupere_la_liste_des_monstre()
 
 
 def afficher_les_monstres_disponibles() -> None:
@@ -100,10 +100,9 @@ def combatsimple():
     # défini les combattants
     qui_combat = choisir_deux_combattants()
     #combat en lui même
-    combatencours = Combat(qui_combat[0],qui_combat[1])
-    quiestvainqueur = combatencours.effectue_combat()
+    vainqueur = port_console.détermine_le_vainceur_d_un_combat_simple(qui_combat[0],qui_combat[1])
     #affiche le résultat
-    print("le vainqueur est : " + quiestvainqueur.classe + "\n")
+    print("le vainqueur est : " + vainqueur.classe + "\n")
 
 
 def tournoisentremonstre():
