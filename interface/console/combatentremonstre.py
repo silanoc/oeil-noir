@@ -14,7 +14,7 @@ from random import *
 	
 #from domaine.lanceur_de import d6, d20 
 #from domaine.entite import Entite as Entite
-#from domaine.combat import Combat as Combat
+from domaine.combat import Combat as Combat
 
 from domaine.port_console import recupere_la_liste_des_monstre
 
@@ -23,8 +23,10 @@ from domaine.port_console import recupere_la_liste_des_monstre
 #------
 
 def bannieredebutprogramme() -> None:
-    """Simple message à afficher au lancement du programme.
-    Print dans la console
+    """Simple .
+    Print dans la console :
+    * message à afficher au lancement du programme
+    * le logo en pixel art, stocké dans un fichier externe
     """
     
     print("""__________________________________________________________________
@@ -32,48 +34,49 @@ Bienvenue dans mon programme de simulation de combat de l'oeil noir
 par Silanoc, avril 2021, version 1
 """)
 
-    print("""
-@@@###### =  =  =  =  =  = *******+++++++::::::::::::::::::::::+++++++******* =  =  =  =  =  = ######@@
-@@@@###### =  =  =  =  =  = *******+++++++::::::::::::::::::::+++++++******* =  =  =  =  =  = ######@@@
-@@@@@###### =  =  =  =  =  = *******+++++* = @WWWWWWWWWWWWWW@#*+++++++******* =  =  =  =  =  = ######@@@@
-@@@@@####### =  =  =  =  =  = *******#WWWWWWWWWWWWWWWWWWWWWWWWWW@ = ******** =  =  =  =  =  = #######@@@@
-@@@@@@####### =  =  =  =  =  =  = * = @WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW#*** =  =  =  =  =  =  = #######@@@@@
-W@@@@@@####### =  =  =  =  = @WWWWWWWWWWW# = +:---------:*#WWWWWWWWWWWW# =  =  =  =  =  = #######@@@@@@
-WW@@@@@@######## = @WWWWWWWWW = +++::::----...----:::+*#WWWWWWWWW@ =  = ########@@@@@@W
-WWW@@@@@@@#####@WWWWWWWW#***++++::::---------::::++++*#WWWWWWWW@######@@@@@@@WW
-WWWW@@@@@@@###WWWWWWWW =  =  = ****++++:::::----::::::++++**** = @WWWWWWW###@@@@@@@@WWW
-WWWWW@@@@@@@@WWWWWWW## =  =  =  = ****+++++::::::::::++++++**** =  =  =  = @WWWWWW@@@@@@@@@WWWW
-WWWWWWW@@@@@WWWWWW@#### =  =  =  = *****++++++++++++++++***** =  =  =  =  = ###@WWWWW@@@@@@WWWWWW
-WWWWWWWWW@@WWWWWW@@@#### =  =  =  =  = *******++++++++******* =  =  =  =  = ####@@@WWWWWWW@WWWWWWWW
-WWWWWWWWWWWWWWWWWW@@@@#### =  =  =  =  =  =  = *************** =  =  =  =  =  = #####@@@WWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWW@WWWWWW@@@@##### =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  =  = ######@@@WWWWWWWWWWW@@WWWWWW
-WWWWWWWWWWW#---:+@WWWW@@@@######### =  =  =  =  =  =  =  =  =  =  = ########@@@WWW@+::::::::+@WWWWWWW
-WWWWWWWWWWWW@:-----*W@WWW@@@@@####################@@@@@W#@*-----: = #WWWWWWWWWWWW
-WWWWWWWWWWWWWW#------:#@#@WW@@@@@@@@@@@@@@@@@@@@@@@@W# = @:----:@WWWWWWWWWWWWWWW
-nWWWWWWWWWWWWWWWW = -------+@W@@WWWW@@@@@@@@@@@@@@@WW@ = # = -----+@WWWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWWWW@:-------:#WWWWWWWWWWWWWWWWWWW@@*------*WWWWWWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWWWWWWW = ---------: = @WWWWWWWWWWW#+-------:#WWWWWWWWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWWWWWWWWWW@+-.........------.........:#WWWWWWWWWWWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWWWWWWWWWWWWWW@ = :...............-+#WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW@@@@@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-(c) 2021 topster.de############################################################""")
+    logo = open("images/pixel_art_logo_oeil_noir.txt", 'r')
+    tout_le_logo = logo.readlines()
+    for i in tout_le_logo:
+        print(i, end = "" )
+    
+    print("\n")
 
 
 def genererlesmonstres() -> None:
+    """Via port_console, récupére dans une lsite toutes les instances de monstres possible à avoir"""
     global monstre
     monstre = recupere_la_liste_des_monstre()
-    #monstre = []
-    #for tous_les_monstres in json.load(open("interface/json/data_monstre.json")):
-    #    monstre.append(Entite(**tous_les_monstres))
-    print(monstre)
+
+
+def afficher_les_monstres_disponibles() -> None:
+    """Simple affichage dans la console"""
     for i in range(len(monstre)):
-        print(monstre[i].classe)
-        print(monstre[i].pvmax)
+        print(f" - {monstre[i].classe} avec {monstre[i].pvmax} points d'énergie vitale.")
 
 
-def combatsimple():
-    #choisir les deux participants
+def menu_principal() -> None:
+    """Menu principal du propgramme, demande à l'utilisateur de faire un choix 
+    et de le rentrer en écrivant dans la console
+    """
+    text_choix_possibles: int = """Que voulez vous faire :
+                        afficher les montres disponibles (tapez 0)
+                        un combat entre 2 monstre à choisir (tapez 1)
+                        un tournois (tapez 2)
+                        ou quitter (tapez Q ou q)"""
+    user_answer = input(text_choix_possibles)
+    while user_answer !=  "Q":
+        menu = {"0": afficher_les_monstres_disponibles,
+                "1" : combatsimple,
+                "2" : tournoisentremonstre, 
+                "q":fin, "Q":fin}
+        menu.get(user_answer,passer)()
+        user_answer = input(text_choix_possibles)
+
+
+def choisir_deux_combattants() -> tuple():
+    """Affiche la liste des monstres disponible, avec un numéro de lié.
+    Demande à l'utilisateur de rentrer un nombre pour chacun des monstres devant combattre
+    """
     dicomonstre: dict = {}
     dicomonstrelisible: dict = {}
     for i in range(len(monstre)):
@@ -89,28 +92,18 @@ def combatsimple():
         print("Entrez le chiffre correspondant au 2ème monstre")
         choix2 = input(dicomonstrelisible)
         choix2 = int(choix2)
-    participant1 = dicomonstre[int(choix1)]
-    participant2 = dicomonstre[int(choix2)]
+    participants: tuple = (dicomonstre[int(choix1)], dicomonstre[int(choix2)])
+    return participants
+    
+    
+def combatsimple():
+    # défini les combattants
+    qui_combat = choisir_deux_combattants()
     #combat en lui même
-    combatencours = Combat(participant1,participant2)
+    combatencours = Combat(qui_combat[0],qui_combat[1])
     quiestvainqueur = combatencours.effectue_combat()
     #affiche le résultat
     print("le vainqueur est : " + quiestvainqueur.classe + "\n")
-
-
-def menu_principal():
-    user_answer: int = "a"
-    user_answer = input("""Que voulez vous faire :
-                        un combat entre 2 monstre à choisir (tapez 1)
-                        un tournois (tapez 2)
-                        ou quitter (tapez Q ou q)""")
-    while user_answer !=  "Q":
-        menu = {"1":combatsimple,"2":tournoisentremonstre, "q":fin, "Q":fin}
-        menu.get(user_answer,passer)()
-        user_answer = input("""Que voulez vous faire :
-                            un combat entre 2 monstre à choisir (tapez 1)
-                            un tournois (tapez 2)
-                            ou quitter (taper Q ou q) \n""")
 
 
 def tournoisentremonstre():
@@ -147,7 +140,6 @@ def main() -> None:
     genererlesmonstres()
     bannieredebutprogramme()
     menu_principal()
-    
     
     
 #-----------
