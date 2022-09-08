@@ -1,3 +1,2 @@
 numpy==1.23.2
 pyarrow==9.0.0
-pylance==0.0.5
