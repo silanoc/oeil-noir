@@ -45,7 +45,6 @@ class Combat():
         
         :returns: gagnant, qui des deux protagonistes à gagné le combat.
         :rtype: Entite
-        
         """
         self.attaquant.pvencours: int = self.attaquant.pvmax
         self.defenseur.pvencours: int = self.defenseur.pvmax
@@ -89,7 +88,16 @@ class Combat():
                                                                       celui_qui_attaque.valeur_protection) 
 
                 
-def effectuer_un_tournois(participants: list, nbround: int) -> List[List[int]]:
+def effectuer_un_tournois(participants: list[Entite], nbround: int) -> List[List[int]]:
+    """permet que chaque participants fasse nbround combat contre chacun des autres participants.
+    A la base, tout à été fait pour arriver à cette méthode qui est l'objectif du programme !
+    
+    :param list[entite] participants: liste de tous les monstres qui doivent s'affronter.
+    :param int nbround: nombre de combat que chaque monstre doit faire.
+    
+    :returns: resultat. Nb de combat gagner contre chacun des autres combattants
+    rtype: List[List[int]]
+    """
     resultats: List[List[int]]  =  [[0] * (len(participants)) for _ in range(len(participants))]
     for nmbredecombat in range(nbround):
         for i in range(0, len(participants)):

@@ -4,18 +4,17 @@
 from domaine.lanceur_de import d20
 import domaine.port_json
 
-#----------
-# classes pour générer les personnages 
-# et leurs méthodes
-#---------
+"""génération des monstres et des personnages"""
+
 
 class Entite:
-    """Une entité peut être un hèros ou un monstre. Dans tous les cas, ils ont des attributs et méthodes communes."""
+    """Une entité peut être un hèros ou un monstre. Dans tous les cas, ils ont des attributs et méthodes communes.
+    
+    constructeur :
+    * initialise via les valeurs d'un dictionnaire
+    * attribue les pvencous en fonction de ceux max
+    """
     def __init__(self, **tous_les_monstres):
-        """constructeur
-        initialise via les valeurs de json
-        attribue les pvencous en fonction de ceux max
-        """
         for attr_name, attr_value in tous_les_monstres.items():
             setattr(self, attr_name, attr_value)
         self.pvencours: int  =  self.pvmax
@@ -39,7 +38,6 @@ class Entite:
         :returns reussite_parade
         :rtype bool
         """
-        #jet: int = d20()
         if jet < self.parade:
             reussite_parade = True
             #print ("parade reussite " +str(jet))
@@ -58,6 +56,12 @@ class Entite:
     
 
 def generer_des_monstre() -> list:
+    """Mettre dans une liste une instance d'Entité pour chaque monstre issus d'un dictionnaire.
+    Ce dictionnaire provient d'un fichier json, lu par le port_json
+    
+    :returns: liste_monstre
+    :rtype: list
+    """
     dico_monstre: dict = domaine.port_json.mettre_le_contenu_json_dans_dico()
     liste_monstre: list = []
     for tous_les_item in dico_monstre:
