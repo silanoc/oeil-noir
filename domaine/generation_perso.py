@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""Création des héros"""
+
 from random import *
 from domaine.lanceur_de import d6
 

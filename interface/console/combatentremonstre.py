@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""Pour utilser le programme dans une console"""
+
 import domaine.port_console as port_console
 
 

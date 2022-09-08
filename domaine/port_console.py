@@ -1,11 +1,11 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""port faisant l'interface entre domaine et interface.console.combatentremonstre"""
+
 from typing import List
 from domaine.entite import Entite, generer_des_monstre
 from domaine.combat import Combat, effectuer_un_tournois
-
-"""port faisant l'interface entre domaine et interface.console.combatentremonstre"""
 
 
 def recupere_la_liste_des_monstre() -> list:

@@ -1,10 +1,10 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""génération des monstres et des personnages"""
+
 from domaine.lanceur_de import d20
 import domaine.port_json
-
-"""génération des monstres et des personnages"""
 
 
 class Entite:

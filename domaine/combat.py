@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""Gestion des combats"""
+
 from typing import List
 
 from domaine.lanceur_de import d6, d20 
@@ -8,8 +10,9 @@ from domaine.entite import Entite as Entite
 
 class Combat():
     """Defini l'attaquant et le défenseur dans un combat.
+    
     Classe permattant d'effectuer le combat entre les deux.
-        
+    
     :param Entite joueur1: une instance de Entite
     :param Entite joueur2: une instance de Entite
     """
@@ -22,12 +25,13 @@ class Combat():
         """défini le nombre de point de dégat du type 2d6+2 - protection d'armure
         soit [nbdedegat]d6+[valbonus] - [value_protection]
         Ne peux pas être négatif
-        
+
         :param int nbdedegat: nombre de dé de dégat.
         :param int valbonus: nombre de dégat bonus, peut etre négatif.
         :param int value_protection: valeur de la protection. 
-            Nbre positif, doit être soustrait ou passé en négatif pour addition.
-        
+
+        Nbre positif, doit être soustrait ou passé en négatif pour addition.
+
         :returns: totaldegat 
         :rtype: int
         """
@@ -71,14 +75,16 @@ class Combat():
         return gagnant
             
     def phase_combat(self, celui_qui_attaque: Entite, celui_qui_pare: Entite):
-        """1 phase :
-        La personne qui attaque doit faire un test d'attaque.
-        Si loupé, fin.
-        Si réussit, le défenseur doit testé sa parade.
-        Si la parade est réussi, aucun dégat, sinon calculer retirer les dégats des pv en cours.
+        """Une phase :
+        
+        * La personne qui attaque doit faire un test d'attaque.
+        * Si loupé, fin.
+        * Si réussit, le défenseur doit testé sa parade.
+        * Si la parade est réussi, aucun dégat, sinon calculer retirer les dégats des pv en cours.
         
         :param Entite celui_qui_attaque:
-        :param Entite celui_qui_pare"""
+        :param Entite celui_qui_pare:
+        """
         att: bool =  celui_qui_attaque.jet_attaque(d20())
         if att == True:
             defe: bool =  celui_qui_pare.jet_parade(d20())
@@ -96,7 +102,7 @@ def effectuer_un_tournois(participants: list[Entite], nbround: int) -> List[List
     :param int nbround: nombre de combat que chaque monstre doit faire.
     
     :returns: resultat. Nb de combat gagner contre chacun des autres combattants
-    rtype: List[List[int]]
+    :rtype: List[List[int]]
     """
     resultats: List[List[int]]  =  [[0] * (len(participants)) for _ in range(len(participants))]
     for nmbredecombat in range(nbround):

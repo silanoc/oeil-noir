@@ -1,10 +1,11 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""Module pour gérer les lancer de dé du programme."""
+
 from random import *
 
-"""Module pour gérer les lancer de dé du programme."""
-	
+
 def d20() -> int:
     """lance 1D20
     

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>combat &mdash; Documentation Oeil Noir 2.0.0</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="generation_perso" href="domaine_generation_perso.html" />
+    <link rel="prev" title="entite" href="domaine_entite.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Oeil Noir
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Domaine:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="domaine_lanceur_de.html">lanceur_de</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domaine_entite.html">entite</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">combat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domaine_generation_perso.html">generation_perso</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domaine_port_console.html">port_console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domaine_port_json.html">port_json</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interface_console_combatentremonstre.html">interface_console_combatentremonstre</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Oeil Noir</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>combat</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/domaine_combat.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-domaine.combat">
+<span id="combat"></span><h1>combat<a class="headerlink" href="#module-domaine.combat" title="Lien permanent vers cette rubrique"></a></h1>
+<p>Gestion des combats</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="domaine.combat.Combat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">domaine.combat.</span></span><span class="sig-name descname"><span class="pre">Combat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">joueur1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><span class="pre">Entite</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">joueur2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><span class="pre">Entite</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#domaine.combat.Combat" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Defini l’attaquant et le défenseur dans un combat.</p>
+<p>Classe permattant d’effectuer le combat entre les deux.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>joueur1</strong> (<a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><em>Entite</em></a>) – une instance de Entite</p></li>
+<li><p><strong>joueur2</strong> (<a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><em>Entite</em></a>) – une instance de Entite</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="domaine.combat.Combat.determine_degat">
+<span class="sig-name descname"><span class="pre">determine_degat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nbdedegat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valbonus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_protection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#domaine.combat.Combat.determine_degat" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>défini le nombre de point de dégat du type 2d6+2 - protection d’armure
+soit [nbdedegat]d6+[valbonus] - [value_protection]
+Ne peux pas être négatif</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nbdedegat</strong> (<em>int</em>) – nombre de dé de dégat.</p></li>
+<li><p><strong>valbonus</strong> (<em>int</em>) – nombre de dégat bonus, peut etre négatif.</p></li>
+<li><p><strong>value_protection</strong> (<em>int</em>) – valeur de la protection.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Nbre positif, doit être soustrait ou passé en négatif pour addition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>totaldegat</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="domaine.combat.Combat.effectue_combat">
+<span class="sig-name descname"><span class="pre">effectue_combat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><span class="pre">Entite</span></a></span></span><a class="headerlink" href="#domaine.combat.Combat.effectue_combat" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Le combat est constitué d’assaut. Un assaut de 2 phases.
+A chaque phase on alterne qui attaque et qui pare.
+Le combat s’arrete quand un des deux n’a plus de point de vie.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Renvoie</dt>
+<dd class="field-odd"><p>gagnant, qui des deux protagonistes à gagné le combat.</p>
+</dd>
+<dt class="field-even">Type renvoyé</dt>
+<dd class="field-even"><p><a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite">Entite</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="domaine.combat.Combat.phase_combat">
+<span class="sig-name descname"><span class="pre">phase_combat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">celui_qui_attaque</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><span class="pre">Entite</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">celui_qui_pare</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><span class="pre">Entite</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#domaine.combat.Combat.phase_combat" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>Une phase :</p>
+<ul class="simple">
+<li><p>La personne qui attaque doit faire un test d’attaque.</p></li>
+<li><p>Si loupé, fin.</p></li>
+<li><p>Si réussit, le défenseur doit testé sa parade.</p></li>
+<li><p>Si la parade est réussi, aucun dégat, sinon calculer retirer les dégats des pv en cours.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>celui_qui_attaque</strong> (<a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><em>Entite</em></a>) – </p></li>
+<li><p><strong>celui_qui_pare</strong> (<a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><em>Entite</em></a>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="domaine.combat.effectuer_un_tournois">
+<span class="sig-prename descclassname"><span class="pre">domaine.combat.</span></span><span class="sig-name descname"><span class="pre">effectuer_un_tournois</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">participants</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="domaine_entite.html#domaine.entite.Entite" title="domaine.entite.Entite"><span class="pre">domaine.entite.Entite</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nbround</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#domaine.combat.effectuer_un_tournois" title="Lien permanent vers cette définition"></a></dt>
+<dd><p>permet que chaque participants fasse nbround combat contre chacun des autres participants.
+A la base, tout à été fait pour arriver à cette méthode qui est l’objectif du programme !</p>
+<dl class="field-list simple">
+<dt class="field-odd">Paramètres</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>participants</strong> (<em>list</em><em>[</em><em>entite</em><em>]</em>) – liste de tous les monstres qui doivent s’affronter.</p></li>
+<li><p><strong>nbround</strong> (<em>int</em>) – nombre de combat que chaque monstre doit faire.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Renvoie</dt>
+<dd class="field-even"><p>resultat. Nb de combat gagner contre chacun des autres combattants</p>
+</dd>
+<dt class="field-odd">Type renvoyé</dt>
+<dd class="field-odd"><p>List[List[int]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="domaine_entite.html" class="btn btn-neutral float-left" title="entite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="domaine_generation_perso.html" class="btn btn-neutral float-right" title="generation_perso" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Silanoc.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
