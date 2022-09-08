@@ -9,13 +9,6 @@
 #version 1
 #--------------------
 
-from random import *
-#import json
-	
-#from domaine.lanceur_de import d6, d20 
-#from domaine.entite import Entite as Entite
-from domaine.combat import Combat as Combat
-
 import domaine.port_console as port_console
 
 #------
@@ -106,21 +99,11 @@ def combatsimple():
 
 
 def tournoisentremonstre():
-    #initialisation des participants et des scores
+        #initialisation des participants et des scores
         participants = monstre
-        resultats  =  [[0] * (len(participants)) for _ in range(len(participants))]
         nbround = int(input("Combien de combats souhaitez-vous ?"))
         #combat
-        for nmbredecombat in range(nbround):
-            for i in range(0, len(participants)):
-                for j in range (i+1,len(participants)):
-                    #print (participants[i],participants[j])
-                    combatencours = Combat(participants[i],participants[j])
-                    quiestvainqueur = combatencours.effectue_combat()
-                    if quiestvainqueur == participants[i]:
-                        resultats[i][j]+= 1
-                    else:
-                        resultats[j][i]+= 1
+        resultats = port_console.determine_le_resultat_du_tournois(participants, nbround)
         #affiche les resultats
         for k in range (len(participants)):
             print(str(participants[k].classe) +"\t"+ str(resultats[k]))

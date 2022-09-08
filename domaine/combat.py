@@ -1,6 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+from typing import List
+
 from domaine.lanceur_de import d6, d20 
 from domaine.entite import Entite as Entite
 
@@ -84,4 +86,19 @@ class Combat():
             if defe == False:
                 celui_qui_pare.pvencours -= self.determine_degat(celui_qui_attaque.nb_de_degat,
                                                                       celui_qui_attaque.degat_bonus,
-                                                                      celui_qui_attaque.valeur_protection)      
+                                                                      celui_qui_attaque.valeur_protection) 
+
+                
+def effectuer_un_tournois(participants: list, nbround: int) -> List[List[int]]:
+    resultats: List[List[int]]  =  [[0] * (len(participants)) for _ in range(len(participants))]
+    for nmbredecombat in range(nbround):
+        for i in range(0, len(participants)):
+            for j in range (i+1,len(participants)):
+                #print (participants[i],participants[j])
+                combatencours = Combat(participants[i],participants[j])
+                quiestvainqueur = combatencours.effectue_combat()
+                if quiestvainqueur == participants[i]:
+                    resultats[i][j]+= 1
+                else:
+                    resultats[j][i]+= 1
+    return resultats
