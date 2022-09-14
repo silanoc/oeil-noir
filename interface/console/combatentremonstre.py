@@ -18,7 +18,7 @@ Bienvenue dans mon programme de simulation de combat de l'oeil noir
 par Silanoc, avril 2021, version 1
 """)
 
-    logo = open("images/pixel_art_logo_oeil_noir.txt", 'r')
+    logo = open("./images/pixel_art_logo_oeil_noir.txt", 'r')
     tout_le_logo = logo.readlines()
     for i in tout_le_logo:
         print(i, end="")
