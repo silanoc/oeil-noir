@@ -13,6 +13,12 @@
 - exécuter `main.py`
 - lire la doc `build/html/index.html`
 
+## Docker
+- `docker build -t oeil_noir_en_console .`
+- `docker run -it oeil_noir_en_console`
+
+- image téléchargeable sur : https://hub.docker.com/r/silanoc/oeil_noir
+
 ## Refonte en architecture hexagonale
 Les dossiers et fichiers principaux
 
