@@ -14,7 +14,6 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/translations.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -78,11 +77,11 @@
            <div itemprop="articleBody">
              
   <section id="module-domaine.entite">
-<span id="entite"></span><h1>entite<a class="headerlink" href="#module-domaine.entite" title="Lien permanent vers cette rubrique"></a></h1>
+<span id="entite"></span><h1>entite<a class="headerlink" href="#module-domaine.entite" title="Lien permanent vers ce titre"></a></h1>
 <p>génération des monstres et des personnages</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="domaine.entite.Entite">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">domaine.entite.</span></span><span class="sig-name descname"><span class="pre">Entite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">tous_les_monstres</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#domaine.entite.Entite" title="Lien permanent vers cette définition"></a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">domaine.entite.</span></span><span class="sig-name descname"><span class="pre">Entite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">tous_les_monstres</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#domaine.entite.Entite" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Une entité peut être un hèros ou un monstre. Dans tous les cas, ils ont des attributs et méthodes communes.</p>
 <p>constructeur :
 * initialise via les valeurs d’un dictionnaire
@@ -97,7 +96,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="domaine.entite.Entite.jet_attaque">
-<span class="sig-name descname"><span class="pre">jet_attaque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">13</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#domaine.entite.Entite.jet_attaque" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">jet_attaque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jet</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">7</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#domaine.entite.Entite.jet_attaque" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Defini si l’attaque est réussi, avec un 1d20 en paramètre (la fonction ne fait donc que comparer).
 Réussi si le jet est inférieur à la valeur d’attaque</p>
 <dl class="field-list simple">
@@ -111,7 +110,7 @@ Réussi si le jet est inférieur à la valeur d’attaque</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="domaine.entite.Entite.jet_parade">
-<span class="sig-name descname"><span class="pre">jet_parade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jet</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#domaine.entite.Entite.jet_parade" title="Lien permanent vers cette définition"></a></dt>
+<span class="sig-name descname"><span class="pre">jet_parade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jet</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">8</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#domaine.entite.Entite.jet_parade" title="Lien permanent vers cette définition"></a></dt>
 <dd><p>Fait un test de parade avec 1d20 passé en paramètre.
 Fonction non refactorisé en 1 ligne, comme jet_attaque, au cas envie de rendre le code bavard.
 Réussi si le jet est inférieur à la valeur de parade</p>

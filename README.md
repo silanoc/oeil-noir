@@ -40,8 +40,4 @@ oeil noir
 +-- images
 |   |
 |   +-- pixel_art_logo_oeil_noir.txt - pour affichage console
-|
-+-- programme - à vider tranquillement
-    |
-    +-- combatentremonstre.py - le programme initial, qui est transformé et amélioré
 ```
