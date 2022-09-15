@@ -1,0 +1,17 @@
+.git
+.pytest_cache/*
+build/*
+doc/*
+domaine/__pycache__/*
+domaine/generation_perso.py
+images/320px-L'Œil_noir_(première_édition)_Logo.svg.png
+images/1280px-L'Œil_noir_(première_édition)_Logo.svg.png
+interface/__pycache__/*
+interface/console/__pycache__/*
+interface/console/tests_console/*
+interface/tests_domaine/*
+venv_oeil_noir/*
+.gitignore
+make.bat
+Makefile
+TODO.org
